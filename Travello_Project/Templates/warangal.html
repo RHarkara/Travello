@@ -1,0 +1,66 @@
+{% load static%}
+
+{% static "Images" as baseUrl %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Warangal Details</title>
+    <link rel="stylesheet" href="{% static 'warangal.css' %}">
+    <link rel="stylesheet" href="{% static 'warangal2.css' %}">
+
+</head>
+<body>
+       <div class="header">
+           <a href="index.html" class="logo">Visit India</a>
+           <div class="header-right">
+               <a class="active" href="#">Home</a>
+               <a class="active" href="#">Contact</a>
+               <a class="active" href="#">aboutus</a>
+
+
+           </div>
+            <div class="warangalDetails" id="warangalDetails">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col text-center">
+                                <div class="Title"><h1>Warangal Destinations</h1></div>
+                                <div class="section_title"><h2>Popular Destinations</h2></div>
+                            </div>
+                        </div>
+                        <div class="row destinations_row">
+                            <div class="col">
+                                <div class="destinations_container item_grid">
+            
+                                    {% for warangalDetail in warangalDetails %}
+            
+                                    <!-- Destination -->
+                                    <div class="warangalDetails item">
+                                        <div class="warangalDetails_image">
+                                        
+                                            <img src="{{warangalDetail.img.url}}" alt="" style="width: 100%; float: right; margin-right: 10px;"/>
+                                        
+                                            {% if warangalDetail.new %}
+                                            <div class="spec_offer text-center"><a href="#">New Place</a></div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="warangalDetails_content">
+                                            <div class="warangalDetails_name"><a href="warangalDetails.html">{{warangalDetail.name}}</a></div>
+                                            <div class="warangalDetails_details"><p>{{warangalDetail.description}}</p></div>
+                                            <div class="warangalDetails_new">{{warangalDetail.new}}</div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+       </div>
+</body>
+</html>
